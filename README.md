@@ -40,6 +40,7 @@ selpg 通过以下方法记住当前页号：如果输入是每页行数固定�
 ## 程序设计
 ### 数据结构，全局变量，常量
 一个结构体存储和命令相关的全部参数：
+```go
 type selpg_args struct {
 	start_page int
 	end_page int
@@ -48,6 +49,7 @@ type selpg_args struct {
 	page_type int
 	print_dest string
 }
+```
 
 全局变量有一个string类型的progname，作为在错误消息中显示之用。用这种方法，即使将 selpg 命令重命名为别的名称，新的名称也将在消息中显示，不必修改该代码。
 
@@ -55,10 +57,13 @@ type selpg_args struct {
 `const INT32MAX = 1<<31 - 1`
 
 ### 函数
-
+```go
 func process_args(ac int, av []string, psa *selpg_args)
+```
 检查参数合法性，并将参数赋值给结构体
+```go
 func process_input(psa *selpg_args)
+```
 根据参数的选择处理函数的要求，读取输入，显示输出
 ## 程序测试
 以下是测试的命令，结果截图存在‘测试截图’文件夹中（为了截图效果，暂时会把默认的page_len调成32）：
